@@ -1,0 +1,31 @@
+<!-- rtf.component.html -->
+
+<form [formGroup]="userForm">
+    <label class="text">Enter your name:</label>
+    <input type="text" name="fname" formControlName="fname" class="form-control">
+    <div class="alert alert-danger" *ngIf="userForm.get('fname').touched && userForm.get('fname').invalid">
+        <div *ngIf="userForm.get('fname').errors.required">This field is required</div>
+        <div *ngIf="userForm.get('fname').errors.pattern">Name must contain only characters and be between 3 to 20 characters long</div>
+    </div>
+
+    <label class="text">Enter your password:</label>
+    <input type="password" name="passwd" formControlName="passwd" class="form-control">
+    <div class="alert alert-danger" *ngIf="userForm.get('passwd').touched && userForm.get('passwd').invalid">
+        <div *ngIf="userForm.get('passwd').errors.required">This field is required</div>
+        <div *ngIf="userForm.get('passwd').errors.pattern">Password must contain only characters and be between 3 to 20 characters long</div>
+    </div>
+
+    <label class="text">Enter your email:</label>
+    <input type="email" name="email" formControlName="email" class="form-control">
+    <div class="alert alert-danger" *ngIf="userForm.get('email').touched && userForm.get('email').invalid">
+        <div *ngIf="userForm.get('email').errors.required">This field is required</div>
+        <div *ngIf="userForm.get('email').errors.pattern">Invalid email format</div>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            <input type="checkbox" name="term" formControlName="term" class="form-check-input">
+            Accept Term And Condition
+        </label>
+    </div>
+    <button type="submit" class="btn btn-success mt-2" [disabled]="userForm.invalid">Submit</button>
+</form>
